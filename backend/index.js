@@ -8,7 +8,6 @@ const app = express();
 
 const server = http.createServer(app);
 
-
 const io = new Server(server, {
   cors: {
     origin: "*",
@@ -94,7 +93,7 @@ io.on("connection", (socket) => {
       rooms.get(currentRoom).delete(currentUser);
       io.to(currentRoom).emit("userJoined", Array.from(rooms.get(currentRoom)));
     }
-    console.log("user Disconnected");
+    console.log("User Disconnected");
   });
 });
 
@@ -109,5 +108,5 @@ app.get("*", (req, res) => {
 });
 
 server.listen(port, () => {
-  console.log("server is working on port 5000");
+  console.log(`Server is working on port ${port}`);
 });
